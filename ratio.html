@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+ผู้ใช้กรอกได้ 1 ช่อง
+<br><br>
+<table border="1">
+  <tr>
+    <td align="center"><b>100</b></td>
+    <td align="center"><b>7</b></td>
+    <td align="center"><b>107</b></td>
+    <td align="center"><b>3</b></td>
+    <td align="center"><b>104</b></td>
+  </tr>
+  <tr>
+    <td><input type="text" id="in0"></td>
+    <td><input type="text" id="in1"></td>
+    <td><input type="text" id="in2"></td>
+    <td><input type="text" id="in3"></td>
+    <td><input type="text" id="in4"></td>
+  </tr>
+</table>
+<br>
+<button onclick="calRatios()">GO</button>
+<button onclick="clearAll()">Clear</button>
+<script>
+  const bases = [100, 7, 107, 3, 104];
+
+  function calRatios() {
+    let ratio = 0;
+    for (let i = 0; i < 5; i++) {
+      let value = document.getElementById("in" + i).value;
+      if (value !== "") {
+        ratio = value / bases[i];
+      }
+    }
+    for (let i = 0; i < 5; i++) {
+      document.getElementById("in" + i).value = bases[i] * ratio;
+    }
+  }
+
+  function clearAll() {
+    for (let i = 0; i < 5; i++) {
+      document.getElementById("in" + i).value = "";
+    }
+  }
+</script>
+</body>
+</html>

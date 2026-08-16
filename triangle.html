@@ -2,16 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Triangle</title>
 </head>
 <body>
   <h2>Triangle</h2>
-  <input type="number" id="numInput" placeholder="Enter a number">
+  <input type="number" id="Input">
   <button onclick="drawTriangle()">Go</button>
   <pre id="output"></pre>
   <script>
     function drawTriangle() {
-      let n = parseInt(document.getElementById("numInput").value);
+      let n = parseInt(document.getElementById("Input").value);
       let result = "";
       if (n%2===0){
           for (let i =1; i<=n; i++){

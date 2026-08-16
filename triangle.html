@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Triangle</title>
+</head>
+<body>
+  <h2>Triangle</h2>
+  <input type="number" id="numInput" placeholder="Enter a number">
+  <button onclick="drawTriangle()">Go</button>
+  <pre id="output"></pre>
+  <script>
+    function drawTriangle() {
+      let n = parseInt(document.getElementById("numInput").value);
+      let result = "";
+      if (n%2===0){
+          for (let i =1; i<=n; i++){
+              let line = '';
+              for (let j = 1; j<=i; j++){
+                  line += '*';
+              }
+              result += line + "\n";
+          }
+      }else{
+          for (let i=n; i>=1; i--){
+              let line = '';
+              for (let j=1; j<=i; j++){
+                  line += '*';
+              }
+              result += line + "\n";
+          }
+      }
+      document.getElementById("output").textContent = result;
+    }
+  </script>
+</body>
+</html>
+
+

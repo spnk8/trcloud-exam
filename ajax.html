@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<canvas id="barChart" style="max-width:600px"></canvas>
+<canvas id="pieChart" style="max-width:600px"></canvas>
+<body>
+    <script>
+        fetch("https://www.trcloud.co/test/api.php")
+            .then(response => response.json())
+            .then(data => {
+            const labels = data.map(item => item.City); 
+            const values = data.map(item => item.Population);
+            const barColors = ["red","green","blue","orange","purple","brown","pink","gray","cyan","gold"];
+            new Chart("barChart", {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [{
+                backgroundColor: barColors,
+                data: values
+                }]
+            },
+            options: {
+                type: "horizontalBar",
+                legend: {display: true},
+            }
+            });
+
+            new Chart("pieChart", {
+            type: "pie",
+            data: {
+                labels: labels,
+                datasets: [{
+                backgroundColor: barColors,
+                data: values
+                }]
+            },
+            options: {
+                legend: {display: true},
+            }
+            });
+        })
+    </script>
+</body>
+</html>

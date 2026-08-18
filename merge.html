@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <b>Array1</b>
+  <table border="1" id="ar1table"></table>
+  <table border="1" id="ar2table"></table>
+  <table border="1" id="output"></table>
+  <script>
+    const array1 = [
+      { code: 101, name: "AAA" },
+      { code: 102, name: "BBB" },
+      { code: 103, name: "CCC" }
+    ];
+    let ar1 = "<tr><th>Code</th><th>Name</th></tr>";
+    array1.forEach(row => {
+      ar1 += "<tr><td>" + row.code + "</td><td>" + row.name + "</td></tr>";
+    });
+    document.getElementById("ar1table").innerHTML = ar1;
+
+    const array2 = [
+      { code: 103, city: "Singapore" },
+      { code: 102, city: "Tokyo" },
+      { code: 101, city: "Bangkok" }
+    ];
+    let ar2 = "<tr><th>Code</th><th>City</th></tr>";
+    array2.forEach(row => {
+      ar2 += "<tr><td>" + row.code + "</td><td>" + row.city + "</td></tr>";
+    });
+    document.getElementById("ar2table").innerHTML = ar2;
+
+    const output = array1.map(a => {
+    const match = array2.find(b => b.code === a.code);
+      return {
+        code: a.code,
+        name: a.name,
+        city: match.city,
+      };
+    });
+
+    let html = "<tr><th>Code</th><th>Name</th><th>City</th></tr>";
+    output.forEach(row => {
+      html += "<tr><td>" + row.code + "</td><td>" + row.name + "</td><td>" + row.city + "</td></tr>";
+    });
+    document.getElementById("output").innerHTML = html;
+  </script>
+</body>
+</html>
+
+

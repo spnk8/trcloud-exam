@@ -14,18 +14,26 @@
             const labels = data.map(item => item.City); 
             const values = data.map(item => item.Population);
             const barColors = ["red","green","blue","orange","purple","brown","pink","gray","cyan","gold"];
+            
             new Chart("barChart", {
             type: "bar",
             data: {
                 labels: labels,
                 datasets: [{
-                backgroundColor: barColors,
-                data: values
+                    label: 'Range by Country',
+                    backgroundColor: barColors,
+                    data: values
                 }]
             },
             options: {
-                type: "horizontalBar",
                 legend: {display: true},
+                scales: {
+                    yAxes: [{
+                        ticks: 
+                            {min: 0},
+                            max: 35000000
+                }],
+                    }
             }
             });
 
@@ -34,12 +42,15 @@
             data: {
                 labels: labels,
                 datasets: [{
-                backgroundColor: barColors,
-                data: values
+                    backgroundColor: barColors,
+                    data: values
                 }]
             },
             options: {
                 legend: {display: true},
+                // scales: {
+                //     yAxes: [{ticks: {beginAtZero: true}}],
+                //     }
             }
             });
         })
